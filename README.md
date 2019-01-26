@@ -2,7 +2,7 @@
 
 Crux is cron's best friend; a semantic cron expression helper.
 
-Do you like crontab? It's nice and you can do a lot of helpful things with it thanks to its clever scheduling syntax.
+Do you like crontab? It's nice and you can do a lot of helpful things with it thanks to its clever scheduling syntax and willingness to run whatever shell command you tell it to run, rigidly on that schedule without compromise.
 
 Crafting crontab entries can be a little bit faster and a bit less dangerous. Improperly written cron jobs can really mess things up in ways that are hilarious, and also ways that are far from hilarious.
 
