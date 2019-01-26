@@ -49,7 +49,7 @@ An example of a crontab entry would be a cron expression followed by the command
 ```
 0 0,12  1 */2 * echo $(date) >> ~/list-of-timestamps.txt
 ```
-This crontab entry will put a new timestamp into a file in your home directory according to the following schedule:
+This crontab entry will paste a new timestamp into a new line of a text file in your home directory according to the following schedule:
   - __Midnight__ and __noon__ on the __first day__ of __every other month__, __whatever day of the week__ that might be
 
 As you can see this is both very granularly specified and very confusing. The whitespace is hard to read, and every character in the expression is deeply important to the schedule. It's also unlike any syntax for anything else ever. But it's very powerful and useful for automating all kinds of things you need your system to do.
