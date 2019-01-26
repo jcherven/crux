@@ -57,3 +57,5 @@ This cron job will paste a new timestamp into a new line of a text file in your 
 As you can see this is both very granularly specified and very confusing. The whitespace is hard to read, and every character in the expression is deeply important to the schedule. It's also unlike any syntax for anything else ever. But it's very powerful and useful for automating all kinds of things you need your system to do.
 
 So, this could be a little easier. I'd like to use my app to specify the schedule part in plain laguage and generate a little text snippet of the crontab expression. Then I can paste that into my crontab file. I'd like to not worry about double and triple checking the expression when I write these. And perhaps if you administer a \*nix system, you would too.
+
+While I'm building this, check out some cool things you can look forward to doing with cron at [commandlinefu](https://www.commandlinefu.com/commands/matching/cron/Y3Jvbg==/sort-by-votes).
