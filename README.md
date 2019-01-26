@@ -45,7 +45,7 @@ You can edit a file, known as a **__crontab__** (*cron* as in *chronological*, *
 ```
 $ crontab -e
 ```
-When you save that file with a new entry, you have a new cron job that your system will ruthlessly execute on schedule.
+When you save that file with a new entry, you have a new cron job that your system will ruthlessly execute on schedule, until you remove that entry.
 
 An example of a crontab entry would be a **__cron expression__** followed by **__the command to run__**. Here's a weird example:
 ```
