@@ -29,7 +29,13 @@ After deciding to make this, I found that there are at least two other crontab e
 Crux will also be quite different in UX, hopefully for the better.
 
 ## What's cron?
-Crontab is a small system application built in to most Unix-like systems. It allows a user to specify a schedule for automatically running a command, kicking off a script, or performing some task regularly. It faithfully does exactly what you tell it to do, whether that is hilarious, stupid, or what you actually originally intended.
+Crontab is a small system application built in to most Unix-like systems. It allows a user to specify a schedule for automatically running a command, kicking off a script, or performing some task regularly.
+
+People refer to these scheduled tasks as *cron jobs*. They faithfully do exactly what you tell them to do, whether that is hilarious, stupid, or what you actually originally intended.
+
+Believe it or not, it's really easy to do something unintentionally stupid with them. Testing out a new cron job usually means waiting for it to run and then checking to see if you nailed it. The problem is that these schedules can be confusing to create.
+
+Consider the following.
 
 You can check out what cron jobs you may or may not currently have by doing this at your command prompt:
 ```
