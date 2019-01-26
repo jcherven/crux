@@ -13,12 +13,15 @@ Crux will be a novel way to create cron expressions semantically. A simple MERN 
   - On this day of this month at this time
   - Every x days
   - From x time to y time during these days
-  - (We'll see what else I come up with)
+  - (We'll see what else I come up with; cron can be quite expressive)
+- Mobile-first front-end built in React and Foundation
 - Sign in to an account so you can save and recall your favorite cron expressions
 - Share crontab expressions with others, and see some clever cron expressions others have saved
+- Back-ended by Express and MongoDB
 - More if this turns out to work okay and be a good idea
 
 After deciding to make this, I found that there are at least two other crontab expression helpers that are both quite good and quite different from one another in UX and features:
 - [Corntab](http://corntab.com)
 - [Crontab Guru](https://crontab.guru)
+
 Crux will also be quite different in UX, hopefully for the better.
