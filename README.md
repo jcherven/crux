@@ -14,6 +14,7 @@ Crux will be a novel way to create cron expressions semantically. A simple MERN 
   - Every x days
   - From x time to y time during these days
   - (We'll see what else I come up with; cron can be quite expressive)
+- Constraints on possibly dangerous or hilarious expressions
 - Mobile-first front-end built in React and Foundation
 - Sign in to an account so you can save and recall your favorite cron expressions
 - Share crontab expressions with others, and see some clever cron expressions others have saved
