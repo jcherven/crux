@@ -1,6 +1,6 @@
 # Crux
 
-Crux is cron's best friend; a semantic cron expression helper.
+Crux is cron's best friend; a semantic crontab expression helper.
 
 Do you like crontab? It's nice and you can do a lot of helpful things with it thanks to its clever scheduling syntax and willingness to run whatever shell command you tell it to run, rigidly on that schedule without compromise.
 
