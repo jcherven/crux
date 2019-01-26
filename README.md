@@ -45,7 +45,7 @@ You can edit a file, known as a **__crontab__** (*cron* as in *chronological*, *
 ```
 $ crontab -e
 ```
-An example of a crontab entry would be a cron expression followed by the command to run. Here's a weird example:
+An example of a crontab entry would be a **__cron expression__** followed by **__the command to run__**. Here's a weird example:
 ```
 0 0,12  1 */2 * echo $(date) >> ~/list-of-timestamps.txt
 ```
