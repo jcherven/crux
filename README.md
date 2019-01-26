@@ -41,7 +41,7 @@ You can check out what cron jobs you may or may not currently have by doing this
 ```
 $ crontab -l
 ```
-You can edit a file referred to as a crontab (*cron* as in *chronological*, *tab* as in *table*) in order to specify the schedule and the command to run. This file will open in your terminal environment's default text editor with:
+You can edit a file, known as a crontab (*cron* as in *chronological*, *tab* as in *table*), in order to specify the schedule and the command to run. This file will open in your terminal environment's default text editor with:
 ```
 $ crontab -e
 ```
