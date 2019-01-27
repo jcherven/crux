@@ -1,6 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const expressions = require('./routes/api/expressions');
+
 const app = express();
 
 const db = require('./config/keys').mongoURI;
@@ -11,6 +15,11 @@ mongoose
   .catch( err => console.log(err) );
 
 app.get('/', (req, res) => res.send(`SANCHECK`));
+
+// user routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/expressions', expressions);
 
 const port = process.env.PORT || 3000;
 
