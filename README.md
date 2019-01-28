@@ -65,3 +65,5 @@ While I'm building this, check out some cool things you can look forward to doin
 Following the well-known advice of security not being an add-on but a core component, I've decided to do something scary and work on user registration and authentication right away as part of the initial work on the back end API. It's only scary because this is the first time I've ever tried to implement it in anything.
 
 At the moment I've got it working smoothly: HTTP requests to the users API endpoint are giving me the JSON messages I'm expecting, and the user token is being sent back from my JSON Web Token key signing call.
+
+I've deployed the current state to Heroku, and after fiddling with the deployment's environment variables I'm successfully hitting the deployed API and getting the expected JSON responses.
