@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -11,7 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-const db = require('./config/keys').mongoURI;
+const db = process.env.mongoURI;
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -27,4 +28,4 @@ app.use('/api/expressions', expressions);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`Crux server running at http://localhost:${port}`));
+app.listen(port, () => console.log(`Crux server listening at http://localhost:${port}`));

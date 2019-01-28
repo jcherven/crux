@@ -1,3 +1,6 @@
+# local configuration
+.env
+
 # Logs
 logs
 *.log

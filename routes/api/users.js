@@ -1,9 +1,10 @@
 const express = require('express');
+require('dotenv').config();
 const router = express.Router();
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
+const serverKey = process.env.serverKey;
 
 const User = require('../../models/User');
 
@@ -12,7 +13,7 @@ const User = require('../../models/User');
 // @access      Public
 router.get('/test', (req, res) => res.json({msg: "Users routing successfully"}));
 
-// @route       GET api/users/register
+// @route       POST api/users/register
 // @desc        register new user
 // @access      Public
 router.post('/reg', (req, res) => {
@@ -36,12 +37,12 @@ router.post('/reg', (req, res) => {
               .then(user => res.json(user))
               .catch(err => console.log(err));
           });
-        })
+        });
       };
     });
 });
 
-// @route       GET api/users/signin
+// @route       POST api/users/signin
 // @desc        user sign in
 // @access      Public
 router.post('/signin', (req, res) => {
@@ -50,27 +51,27 @@ router.post('/signin', (req, res) => {
   User.findOne({ email })
     .then(user => {
       if (!user) {
-        return res.status(404).json({email: "no matching email"});
-      }
-
+        return res.status(404).json({email: "Email isn't validating"});
+      };
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
             const payload = { id: user.id, name: user.name };
             jwt.sign(
               payload,
-              keys.serverKey,
+              serverKey,
               { expiresIn: '3hr' },
               (err, token) => {
                 res.json({
                   loginSuccessful: true,
                   token: 'Bearer ' + token
                 });
-              })
+              });
           } else {
             return res.status(400).json({ password: "Password isn't validating" });
-          }
-        })
-    })
-})
+          };
+        });
+    });
+});
+
 module.exports = router;
