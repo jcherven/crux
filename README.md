@@ -59,3 +59,9 @@ As you can see this is both very granularly specified and very confusing. The wh
 So, this could be a little easier. I'd like to use my app to specify the schedule part in plain laguage and generate a little text snippet of the crontab expression. Then I can paste that into my crontab file. I'd like to not worry about double and triple checking the expression when I write these. And perhaps if you administer a \*nix system, you would too.
 
 While I'm building this, check out some cool things you can look forward to doing with cron at [commandlinefu](https://www.commandlinefu.com/commands/matching/cron/Y3Jvbg==/sort-by-votes).
+
+## Project Progress
+### **__2019-01-27__**
+Following the well-known advice of security not being an add-on but a core component, I've decided to do something scary and work on user registration and authentication right away as part of the initial work on the back end API. It's only scary because this is the first time I've ever tried to implement it in anything.
+
+At the moment I've got it working smoothly: HTTP requests to the users API endpoint are giving me the JSON messages I'm expecting, and the user token is being sent back from my JSON Web Token key signing call.
