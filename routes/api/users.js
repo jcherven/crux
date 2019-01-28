@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 
 const User = require('../../models/User');
 
@@ -54,7 +56,17 @@ router.post('/signin', (req, res) => {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
-            res.json({ msg: "Successful email and password match" });
+            const payload = { id: user.id, name: user.name };
+            jwt.sign(
+              payload,
+              keys.serverKey,
+              { expiresIn: '3hr' },
+              (err, token) => {
+                res.json({
+                  loginSuccessful: true,
+                  token: 'Bearer ' + token
+                });
+              })
           } else {
             return res.status(400).json({ password: "Password isn't validating" });
           }
