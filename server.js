@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-const db = process.env.mongoURI;
+const db = process.env.MONGODB_URI || process.env.mongoURI;
 
 mongoose
   .connect(db, { useNewUrlParser: true })
