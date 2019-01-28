@@ -39,4 +39,26 @@ router.post('/reg', (req, res) => {
     });
 });
 
+// @route       GET api/users/signin
+// @desc        user sign in
+// @access      Public
+router.post('/signin', (req, res) => {
+  const { email, password } = req.body;
+
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({email: "no matching email"});
+      }
+
+      bcrypt.compare(password, user.password)
+        .then(isMatch => {
+          if (isMatch) {
+            res.json({ msg: "Successful email and password match" });
+          } else {
+            return res.status(400).json({ password: "Password isn't validating" });
+          }
+        })
+    })
+})
 module.exports = router;
