@@ -60,6 +60,8 @@ So, this could be a little easier. I'd like to use my app to specify the schedul
 
 While I'm building this, check out some cool things you can look forward to doing with cron at [commandlinefu](https://www.commandlinefu.com/commands/matching/cron/Y3Jvbg==/sort-by-votes).
 
+[Back to top](#Crux)
+
 ## Project Progress
 #### **__2019-01-29__**
 After finishing authentication with JWT and Passport, input basic validation has been implemented on the register and login API endpoints with the help of the Validator NPM package. The routes are checking for empty fields, valid email formation, name length, and password minimum length, returning error objects in each case that will be passed to the client app. Existing user email addresses in the DB are also being errored back properly.
@@ -88,9 +90,13 @@ The JSON object that gets served from a successful login request contains the us
 
 Just about every value in the request body is invoking the expected JSON message response so far.
 
+[Back to top](#Crux)
+
 #### **__2019-01-27__**
 Following the well-known advice of security not being an add-on but a core component, I've decided to do something scary and work on user registration and authentication right away as part of the initial work on the back end API. It's only scary because this is the first time I've ever tried to implement it in anything.
 
 At the moment I've got it working smoothly: HTTP requests to the users API endpoint are giving me the JSON messages I'm expecting. New user registrations are writing to the back end database, and upon hitting the sign-in endpoint with authenticated credentials the user token is being sent back from my JSON Web Token key signing call.
 
 I've deployed the current state to Heroku, and after fiddling with the deployment's environment variables I'm successfully hitting the deployed API and getting the expected JSON responses.
+
+[Back to top](#Crux)
