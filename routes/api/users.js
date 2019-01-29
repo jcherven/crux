@@ -10,6 +10,10 @@ const serverKey = process.env.serverKey;
 
 const User = require('../../models/User');
 
+// Require input validation scripts
+const validateRegInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
+
 // @route       GET api/users/test
 // @desc        Tests users route
 // @access      Public
@@ -19,6 +23,12 @@ router.get('/test', (req, res) => res.json({msg: "Users routing successfully"}))
 // @desc        register new user
 // @access      Public
 router.post('/reg', (req, res) => {
+  const { errors, isValid } = validateRegInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({ email: req.body.email  })
     .then(user => {
       if (user) {
@@ -47,7 +57,13 @@ router.post('/reg', (req, res) => {
 // @route       POST api/users/signin
 // @desc        user sign in
 // @access      Public
-router.post('/signin', (req, res) => {
+router.post('/login', (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const { email, password } = req.body;
 
   User.findOne({ email })
@@ -77,7 +93,7 @@ router.post('/signin', (req, res) => {
 });
 
 // @route       GET api/users/current
-// @desc        Return current user
+// @desc        Return currently logged in user
 // @access      Private
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({

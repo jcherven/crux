@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-const db = process.env.MONGODB_URI || process.env.mongoURI;
+const db = process.env.MONGODB_URI;
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -29,6 +29,6 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/expressions', expressions);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
-app.listen(port, () => console.log(`Crux server listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Crux server listening at port ${port}`));
