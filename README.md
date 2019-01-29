@@ -13,7 +13,7 @@ __Crux__ will be a novel way to create cron expressions semantically. A simple M
   - On this day of this month at this time
   - Every x days
   - From x time to y time during these days
-  - (We'll see what else I come up with; cron can be quite expressive)
+  - (We'll see what else I come up with; cron can be surprisingly expressive)
 - Constraints on possibly dangerous or hilarious expressions
 - Mobile-first front-end built in React and Foundation
 - Sign in to an account so you can save and recall your favorite cron expressions
