@@ -68,7 +68,7 @@ After finishing authentication with [JSON Web Tokens](https://jwt.io/) and [Pass
 
 Should this all be done on the client app instead? Should it be done on both? I don't know yet and at the moment I'm unlikely to change it unless someone yells at me or I read something authoritative on the topic. Back end validation seems like a safe default for now.
 
-The current state has been deployed to a test environment on [Heroku](https://www.heroku.com/). You can curl the login endpoint with:
+The current state has been deployed to a test environment on [Heroku](https://www.heroku.com/). You can curl the register endpoint with:
 ````
 curl -X POST \
   https://jcherven-crux.herokuapp.com/api/users/reg \
