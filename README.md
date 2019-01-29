@@ -64,11 +64,11 @@ While I'm building this, check out some cool things you can look forward to doin
 
 ## Project Progress
 #### **__2019-01-29__**
-After finishing authentication with JWT and Passport, input basic validation has been implemented on the register and login API endpoints with the help of the Validator NPM package. The routes are checking for empty fields, valid email formation, name length, and password minimum length, returning error objects in each case that will be passed to the client app. Existing user email addresses in the DB are also being errored back properly.
+After finishing authentication with [JSON Web Tokens](https://jwt.io/) and [Passport](http://www.passportjs.org/), input basic validation has been implemented on the register and login API endpoints with the help of the [Validator](https://www.npmjs.com/package/validator) NPM package. The routes are checking for empty fields, valid email formation, name length, and password minimum length, returning error objects in each case that will be passed to the client app. Existing user email addresses in the DB are also being errored back properly.
 
 Should this all be done on the client app instead? Should it be done on both? I don't know yet and at the moment I'm unlikely to change it unless someone yells at me or I read something authoritative on the topic. Back end validation seems like a safe default for now.
 
-The current state has been deployed and can be tested. You can curl the login endpoint with:
+The current state has been deployed to a test environment on [Heroku](https://www.heroku.com/). You can curl the login endpoint with:
 ````
 curl -X POST \
   https://jcherven-crux.herokuapp.com/api/users/reg \
@@ -76,7 +76,7 @@ curl -X POST \
   -H 'cache-control: no-cache' \
   -d 'name=&email=&password=&passwordConfirm='
 ````
-A successful registration should return the user's information. You can even see your bcrypt-salted and hashed password (lol). This will obviously not be exposed later on.
+A successful registration should return the user's information. You can even see your [bcrypt](https://www.npmjs.com/package/bcrypt)-salted and hashed password (lol). This will obviously not be exposed later on.
 
 The login endpoint can be curl-ed with:
 ````
