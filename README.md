@@ -73,7 +73,6 @@ The current state has been deployed to a test environment on [Heroku](https://ww
 curl -X POST \
   https://jcherven-crux.herokuapp.com/api/users/reg \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'cache-control: no-cache' \
   -d 'name=&email=&password=&passwordConfirm='
 ````
 A successful registration should return the user's information. You can even see your [bcrypt](https://www.npmjs.com/package/bcrypt)-salted and hashed password (lol). This will obviously not be exposed later on.
@@ -83,7 +82,6 @@ The login endpoint can be curl-ed with:
 curl -X POST \
   https://jcherven-crux.herokuapp.com/api/users/login \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -H 'cache-control: no-cache' \
   -d 'email=&password='
 ````
 The JSON object that gets served from a successful login request contains the user ID and session bearer token, which are used to authenticate requests to private routes while logged in as the user. This was much simpler to implement than I thought it was going to be, thanks to JWT and Passport.
