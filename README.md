@@ -61,7 +61,30 @@ So, this could be a little easier. I'd like to use my app to specify the schedul
 While I'm building this, check out some cool things you can look forward to doing with cron at [commandlinefu](https://www.commandlinefu.com/commands/matching/cron/Y3Jvbg==/sort-by-votes).
 
 ## Project Progress
-### **__2019-01-27__**
+#### **__2019-01-29__**
+After finishing authentication with JWT and Passport, input basic validation has been implemented on the register and login API endpoints with the help of the Validator NPM package. The routes are checking for empty fields, valid email formation, name length, and password minimum length, returning error objects in each case that will be passed to the client app. Existing user email addresses in the DB are also being errored back properly.
+
+Should this all be done on the client app instead? Should it be done on both? I don't know yet and at the moment I'm unlikely to change it unless someone yells at me or I read something authoritative on the topic. Back end validation seems like a safe default for now.
+
+The current state has been deployed and can be tested. You can curl the login endpoint with:
+````
+curl -X POST \
+  https://jcherven-crux.herokuapp.com/api/users/reg \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'cache-control: no-cache' \
+  -d 'name=&email=&password=&passwordConfirm='
+````
+The login endpoint can be curl-ed with:
+````
+curl -X POST \
+  https://jcherven-crux.herokuapp.com/api/users/login \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -H 'cache-control: no-cache' \
+  -d 'email=&password='
+````
+Just about every value in the request body is invoking the expected JSON message response so far.
+
+#### **__2019-01-27__**
 Following the well-known advice of security not being an add-on but a core component, I've decided to do something scary and work on user registration and authentication right away as part of the initial work on the back end API. It's only scary because this is the first time I've ever tried to implement it in anything.
 
 At the moment I've got it working smoothly: HTTP requests to the users API endpoint are giving me the JSON messages I'm expecting. New user registrations are writing to the back end database, and upon hitting the sign-in endpoint with authenticated credentials the user token is being sent back from my JSON Web Token key signing call.
