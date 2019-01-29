@@ -74,6 +74,8 @@ curl -X POST \
   -H 'cache-control: no-cache' \
   -d 'name=&email=&password=&passwordConfirm='
 ````
+A successful registration should return the user's information. You can even see your bcrypt-salted and hashed password (lol). This will obviously not be exposed later on.
+
 The login endpoint can be curl-ed with:
 ````
 curl -X POST \
@@ -82,6 +84,8 @@ curl -X POST \
   -H 'cache-control: no-cache' \
   -d 'email=&password='
 ````
+The JSON object that gets served from a successful login request contains the user ID and session bearer token, which are used to authenticate requests to private routes while logged in as the user. This was much simpler to implement than I thought it was going to be, thanks to JWT and Passport.
+
 Just about every value in the request body is invoking the expected JSON message response so far.
 
 #### **__2019-01-27__**
