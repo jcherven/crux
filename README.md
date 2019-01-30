@@ -2,7 +2,7 @@
 
 Crux is cron's best friend; a semantic crontab expression helper.
 
-Do you like crontab? It's nice and you can do a lot of helpful things with it thanks to its clever scheduling syntax and willingness to run whatever shell command you tell it to run, rigidly on that schedule without compromise.
+Do you like [cron](https://en.wikipedia.org/wiki/Cron)? It's nice and you can do a lot of helpful things with it thanks to its clever scheduling syntax and willingness to run whatever shell command you tell it to run, rigidly on that schedule without compromise.
 
 Crafting crontab entries can be a little bit faster and a bit less dangerous. Improperly written cron jobs can really mess things up in ways that are hilarious, and also ways that are far from hilarious.
 
@@ -13,7 +13,7 @@ __Crux__ will be a novel way to create cron expressions semantically. A simple M
   - On this day of this month at this time
   - Every x days
   - From x time to y time during these days
-  - (We'll see what else I come up with; cron can be quite expressive)
+  - (We'll see what else I come up with; cron can be surprisingly expressive)
 - Constraints on possibly dangerous or hilarious expressions
 - Mobile-first front-end built in React and Foundation
 - Sign in to an account so you can save and recall your favorite cron expressions
@@ -60,10 +60,41 @@ So, this could be a little easier. I'd like to use my app to specify the schedul
 
 While I'm building this, check out some cool things you can look forward to doing with cron at [commandlinefu](https://www.commandlinefu.com/commands/matching/cron/Y3Jvbg==/sort-by-votes).
 
+[Back to top](#Crux)
+
 ## Project Progress
-### **__2019-01-27__**
+#### **__2019-01-29__**
+After finishing authentication with [JSON Web Tokens](https://jwt.io/) and [Passport](http://www.passportjs.org/), input basic validation has been implemented on the register and login API endpoints with the help of the [Validator](https://www.npmjs.com/package/validator) NPM package. The routes are checking for empty fields, valid email formation, name length, and password minimum length, returning error objects in each case that will be passed to the client app. Existing user email addresses in the DB are also being errored back properly.
+
+Should this all be done on the client app instead? Should it be done on both? I don't know yet and at the moment I'm unlikely to change it unless someone yells at me or I read something authoritative on the topic. Back end validation seems like a safe default for now.
+
+The current state has been deployed to a test environment on [Heroku](https://www.heroku.com/). You can curl the register endpoint with:
+````
+curl -X POST \
+  https://jcherven-crux.herokuapp.com/api/users/reg \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'name=&email=&password=&passwordConfirm='
+````
+A successful registration should return the user's information. You can even see your [bcrypt](https://www.npmjs.com/package/bcrypt)-salted and hashed password (lol). This will obviously not be exposed later on.
+
+The login endpoint can be curl-ed with:
+````
+curl -X POST \
+  https://jcherven-crux.herokuapp.com/api/users/login \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'email=&password='
+````
+The JSON object that gets served from a successful login request contains the user ID and session bearer token, which are used to authenticate requests to private routes while logged in as the user. This was much simpler to implement than I thought it was going to be, thanks to JWT and Passport.
+
+Just about every value in the request body is invoking the expected JSON message response so far.
+
+[Back to top](#Crux)
+
+#### **__2019-01-27__**
 Following the well-known advice of security not being an add-on but a core component, I've decided to do something scary and work on user registration and authentication right away as part of the initial work on the back end API. It's only scary because this is the first time I've ever tried to implement it in anything.
 
 At the moment I've got it working smoothly: HTTP requests to the users API endpoint are giving me the JSON messages I'm expecting. New user registrations are writing to the back end database, and upon hitting the sign-in endpoint with authenticated credentials the user token is being sent back from my JSON Web Token key signing call.
 
 I've deployed the current state to Heroku, and after fiddling with the deployment's environment variables I'm successfully hitting the deployed API and getting the expected JSON responses.
+
+[Back to top](#Crux)
