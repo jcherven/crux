@@ -63,7 +63,7 @@ While I'm building this, check out some cool things you can look forward to doin
 [Back to top](#Crux)
 
 ## Project Progress
-#### **__2019-01-27__**
+#### **__2019-02-01__**
 Filled out some more parts of the back-end API with the addition of a private http POST route for the user profile. While I'm not sure what should go into user profiles yet, I do feel that less personal/identifying information is better for now. At the moment a user profile consists of the user's vanity URL, which is updating and returning the expected JSON responses and errors.
 
 This route is at /api/profile, and using the logged in user's bearer token in the header with a HTTP POST updates the user object in the database if it exists. If the field doesn't exist, it's added.
