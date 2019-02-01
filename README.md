@@ -63,6 +63,17 @@ While I'm building this, check out some cool things you can look forward to doin
 [Back to top](#Crux)
 
 ## Project Progress
+#### **__2019-01-27__**
+Filled out some more parts of the back-end API with the addition of a private http POST route for the user profile. While I'm not sure what should go into user profiles yet, I do feel that less personal/identifying information is better for now. At the moment a user profile consists of the user's vanity URL, which is updating and returning the expected JSON responses and errors.
+
+This route is at /api/profile, and using the logged in user's bearer token in the header with a HTTP POST updates the user object in the database if it exists. If the field doesn't exist, it's added.
+
+Hitting the authenticated route with a HTTP GET retrieves the contents of the profile object in the database.
+
+I've added some helpful comment headers to each file to save myself some headaches and confusion while I work. I'm also now using jsdoc tags in comments for the API route methods to see if I can create some nice documentation as I work.
+
+[Back to top](#Crux)
+
 #### **__2019-01-29__**
 After finishing authentication with [JSON Web Tokens](https://jwt.io/) and [Passport](http://www.passportjs.org/), input basic validation has been implemented on the register and login API endpoints with the help of the [Validator](https://www.npmjs.com/package/validator) NPM package. The routes are checking for empty fields, valid email formation, name length, and password minimum length, returning error objects in each case that will be passed to the client app. Existing user email addresses in the DB are also being errored back properly.
 
