@@ -15,10 +15,12 @@ module.exports = function validateProfileIput(data) {
   if ( !Validator.isLength(data.vanityUrl.toString(), {min:3, max:64}) )
     errors.vanityUrl = "Custom URL string must be between 3 and 64 characters";
 
-  if (errors === '' ||
+  if (
+    errors === '' ||
     errors === undefined ||
     errors === null ||
-    Object.keys(errors).length === 0)
+    Object.keys(errors).length === 0
+  )
       isValid = true;
 
   return {

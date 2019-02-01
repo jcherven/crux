@@ -17,10 +17,12 @@ module.exports = function validateLoginInput(data) {
   if ( Validator.isEmpty(data.password.toString()) )
     errors.password = "Password is required";
 
-  if (errors === '' ||
+  if (
+    errors === '' ||
     errors === undefined ||
     errors === null ||
-    Object.keys(errors).length === 0)
+    Object.keys(errors).length === 0
+  )
       isValid = true;
 
   return {

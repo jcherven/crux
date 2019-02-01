@@ -22,7 +22,7 @@ const db = process.env.MONGODB_URI;
 
 mongoose
   .connect(db, { useNewUrlParser: true })
-  .then( () => console.log(`======== MongoDB Connected ========`))
+  .then( () => console.log(`======== MongoDB Connected ========\n`))
   .catch( err => console.log(err) );
 
 // Passport middleware config
