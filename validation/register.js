@@ -1,5 +1,5 @@
 /**************************************
- *
+ * /validation/register.js
  **************************************/
 
 const Validator = require('validator')
