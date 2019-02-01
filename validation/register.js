@@ -1,3 +1,7 @@
+/**************************************
+ *
+ **************************************/
+
 const Validator = require('validator')
 
 module.exports = function validateRegInput(data) {

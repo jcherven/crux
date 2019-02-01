@@ -1,4 +1,9 @@
+/**************************************
+ *
+ **************************************/
+
 const express = require('express');
+
 require('dotenv').config();
 const router = express.Router();
 
@@ -14,14 +19,18 @@ const User = require('../../models/User');
 const validateRegInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-// @route       GET api/users/test
-// @desc        Tests users route
-// @access      Public
+/**************************************
+ * @route       GET api/users/test
+ * @desc        Tests users route
+ * @access      Public
+***************************************/
 router.get('/test', (req, res) => res.json({msg: "Users routing successfully"}));
 
-// @route       POST api/users/register
-// @desc        register new user
-// @access      Public
+/**************************************
+ * @route       POST api/users/register
+ * @desc        register new user
+ * @access      Public
+  ***************************************/
 router.post('/reg', (req, res) => {
   const { errors, isValid } = validateRegInput(req.body);
 
@@ -54,9 +63,11 @@ router.post('/reg', (req, res) => {
     });
 });
 
-// @route       POST api/users/signin
-// @desc        user sign in
-// @access      Public
+/**************************************
+ * @route       POST api/users/signin
+ * @desc        user sign in
+ * @access      Public
+ ***************************************/
 router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
 
@@ -92,9 +103,11 @@ router.post('/login', (req, res) => {
     });
 });
 
-// @route       GET api/users/current
-// @desc        Return currently logged in user
-// @access      Private
+/**************************************
+ * @route       GET api/users/current
+ * @desc        Return currently logged in user
+ * @access      Private
+ ***************************************/
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
     id: req.user.id,
