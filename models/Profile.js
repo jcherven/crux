@@ -16,6 +16,12 @@ const ProfileSchema = new Schema({
     required: true,
     max: 32
   },
+  website: {
+    type: String,
+  },
+  githubUserName: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now
