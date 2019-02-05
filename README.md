@@ -63,6 +63,15 @@ While I'm building this, check out some cool things you can look forward to doin
 [Back to top](#Crux)
 
 ## Project Progress
+#### **__2019-02-05__**
+More API work has been completed. After adding some POST and GET routes for user profiles, I've gotten the very basic routes and validation propped up for the core of the application: the crontab expressions. Currently the expressions model is an object with keys for each cron expression component (second, minute, hour, dayOfMonth, month, dayOfWeek) and a description. There needs to be some more work done to constrain the input to the crontab expression fields to valid cron syntax, but for now I'll press onward to the React frontend and work on this later. I believe having a GUI in the browser will make testing these values a lot easier... right now my testing is being done in Postman and it's pretty slow editing the body of each request to test values.
+
+The current testing workflow involves copypasting the logged in user's bearer token into a POST request header, then manually changing values in the request body. If this could be done in the browser I'd be a lot more efficient, so I consider this enough API work to move on to the client code now.
+
+There's also a matter of whether the validation should be handled in the Mongoose model itself or with my current validation scripts. Maybe both, but I'm worried about database performance.
+
+[Back to top](#Crux)
+
 #### **__2019-02-01__**
 Filled out some more parts of the back-end API with the addition of a private http POST route for the user profile. While I'm not sure what should go into user profiles yet, I do feel that less personal/identifying information is better for now. At the moment a user profile consists of the user's vanity URL, which is updating and returning the expected JSON responses and errors.
 
