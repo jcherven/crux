@@ -14,7 +14,7 @@ const User = require('../../models/User');
 const validateProfileInput = require('../../validation/profile');
 
 /**************************************
- * @route       GET api/profile
+ * @route       GET /api/profile
  * @desc        Retrieve a user's profile if it exists
  * @access      Private
  **************************************/
@@ -37,7 +37,7 @@ router.get(
 );
 
 /**************************************
- * @route       Get api/profile/all
+ * @route       Get /api/profile/all
  * @desc        Retrieve all profiles
  * @access      Public
  **************************************/
@@ -59,7 +59,7 @@ router.get('/all', (req, res) => {
 });
 
 /**************************************
- * @route       GET api/profile/vanityUrl/:vanityUrl
+ * @route       GET /api/profile/vanityUrl/:vanityUrl
  * @desc        Retrieve profile by user's vanity URL
  * @access      Public
  **************************************/
@@ -97,7 +97,7 @@ router.get('/user/:user_id', (req, res) => {
 });
 
 /**************************************
- * @route       POST api/profile
+ * @route       POST /api/profile
  * @desc        Create or update current user's profile
  * @access      Private
  **************************************/
@@ -138,7 +138,7 @@ router.post(
 );
 
 /**************************************
- * @route       DELETE api/profile
+ * @route       DELETE /api/profile
  * @desc        Delete currently authenticated user and profile
  * @access      Private
  **************************************/

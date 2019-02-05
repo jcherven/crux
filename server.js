@@ -11,7 +11,7 @@ const passport = require('passport');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
-const expressions = require('./routes/api/expressions');
+const expression = require('./routes/api/expression');
 
 const app = express();
 
@@ -32,7 +32,7 @@ require('./config/passport')(passport);
 // user routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
-app.use('/api/expressions', expressions);
+app.use('/api/expression', expression);
 
 const port = process.env.PORT;
 
