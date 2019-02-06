@@ -7,12 +7,12 @@ const Schema = mongoose.Schema;
 
 /*************************************************************
  * Field Name 	    Allowed Values    Allowed Special Characters
- * Seconds 	    0-59 	      , - *
- * Minutes 	    0-59 	      , - *
- * Hours 	    0-23 	      , - *
- * Day-of-month     1-31 	      , - *
- * Month 	    1-12 	      , - *
- * Day-of-Week 	    1-7 	      , - * #
+ * Seconds          0-59 	            , - *
+ * Minutes 	        0-59 	            , - *
+ * Hours 	          0-23 	            , - *
+ * Day-of-month     1-31 	            , - *
+ * Month 	          1-12 	            , - *
+ * Day-of-Week 	    1-7 	            , - * #
  * Year (Optional)  empty, 1970-2199  , - *
  *
  * Character key:

@@ -5,7 +5,6 @@
 const express = require('express');
 
 const router = express.Router();
-const mongoose = require('mongoose');
 const passport = require('passport');
 
 const Expression = require('../../models/Expression');
@@ -23,6 +22,20 @@ router.get(
       .sort({ date: -1 })
       .then(expressions => res.json(expressions))
       .catch(err => res.status(404).json({noExprsFound: "No expressions retrieved"}));
+  }
+);
+
+/***************************************
+ * @route       GET /api/expression/:id
+ * @desc        Get an expression by _id
+ * @access      Public
+ **************************************/
+router.get(
+  '/:id',
+  (req, res) => {
+    Expression.findById(req.params.id)
+    .then(expression => res.json(expression))
+    .catch(err => res.status(404).json({ exprNotFound: "No expression found with that ID" }));
   }
 );
 
