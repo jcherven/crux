@@ -24,35 +24,25 @@ const Schema = mongoose.Schema;
  *************************************************************/
 
 const ExprSchema = new Schema({
-  second: {
-    type: String,
-    required: true,
-    default: '*',
-  },
   minute: {
     type: String,
     required: true,
-    default: '*',
   },
   hour: {
     type: String,
     required: true,
-    default: '*',
   },
   dayOfMonth: {
     type: String,
     required: true,
-    default: '*',
   },
   month: {
     type: String,
     required: true,
-    default: '*',
   },
   dayOfWeek: {
     type: String,
     required: true,
-    default: '*',
   },
   description: {
     type: String,

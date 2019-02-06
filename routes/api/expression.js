@@ -24,7 +24,6 @@ router.post(
       const { errors, isValid } = validateExprInput(req.body);
       if (!isValid) return res.status(400).json(errors);
       const newExpr = new Expression({
-        second: req.body.second,
         minute: req.body.minute,
         hour: req.body.hour,
         dayOfMonth: req.body.dayOfMonth,

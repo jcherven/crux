@@ -8,17 +8,13 @@ module.exports = function validateExprIput(data) {
   let errors = {};
   let isValid = false;
 
-  data.second = (data.second) ? data.second.trim() : "";
-  data.minute = (data.minute) ? data.minute.trim() : "";
-  data.hour = (data.hour) ? data.hour.trim() : "";
-  data.dayOfMonth = (data.dayOfMonth) ? data.dayOfMonth.trim() : "";
-  data.month = (data.month) ? data.month.trim() : "";
-  data.dayOfWeek = (data.dayOfWeek) ? data.dayOfWeek.trim() : "";
+  data.minute = (data.minute) ? data.minute.trim() : "*";
+  data.hour = (data.hour) ? data.hour.trim() : "*";
+  data.dayOfMonth = (data.dayOfMonth) ? data.dayOfMonth.trim() : "*";
+  data.month = (data.month) ? data.month.trim() : "*";
+  data.dayOfWeek = (data.dayOfWeek) ? data.dayOfWeek.trim() : "*";
 
-  data.description = (data.description) ? data.description.trim() : "";
-
-  if ( Validator.isEmpty(data.second.toString()) )
-    errors.second = "Expression <second> is missing";
+  data.description = (data.description) ? data.description.trim() : "*";
 
   if ( Validator.isEmpty(data.minute.toString()) )
     errors.minute = "Expression <minute> is missing";
