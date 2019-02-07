@@ -51,7 +51,7 @@ router.post(
   passport.authenticate('jwt',
     { session: false }),
     (req, res) => {
-      const { errors, isValid } = validateExprInput(req.body);
+      const { errors, warnings, isValid } = validateExprInput(req.body);
       if (!isValid) return res.status(400).json(errors);
       const newExpr = new Expression({
         minute: req.body.minute,
@@ -60,7 +60,8 @@ router.post(
         month: req.body.month,
         dayOfWeek: req.body.dayOfWeek,
         description: req.body.description,
-        user: req.user.id,
+        user: req.body.user,
+        warnings: warnings,
       });
       newExpr.save().then(expression => res.json(expression));
     }
