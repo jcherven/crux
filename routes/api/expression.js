@@ -7,6 +7,8 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+const Validator = require('validator');
+
 const Expression = require('../../models/Expression');
 const validateExprInput = require('../../validation/expression.js');
 
@@ -58,9 +60,45 @@ router.post(
         month: req.body.month,
         dayOfWeek: req.body.dayOfWeek,
         description: req.body.description,
+        user: req.user.id,
       });
       newExpr.save().then(expression => res.json(expression));
     }
+);
+
+/***************************************
+ * @route       DELETE /api/expression/:id
+ * @desc        Delete expression by _id
+ * @access      Private
+ **************************************/
+router.delete(
+  '/:id',
+  passport.authenticate(
+    'jwt',
+    {session: false}
+  ),
+  (req, res) => {
+    if (!Validator.isMongoId(req.params.id)) {
+      return res.status(400).json({invalidDocId: "Invalid document ID passed in request"})
+    }
+    Profile.findOne({user: req.user.id})
+      .then(profile => {
+        Expression.findById(req.params.id)
+          .then(expression => {
+            if (expression.user.toString() !== req.user.id) {
+              return res.status(401)
+              .json({notAuthorized: 'User not authorized to delete this document'});
+            };
+            expression.remove().then(() => {
+              res.json({success: true});
+            })
+            .catch(
+              err => res.status(404)
+              .json({exprNotFound: "Could not find that document _id for deletion"})
+            );
+          })
+      })
+  }
 );
 
 module.exports = router;
