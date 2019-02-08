@@ -80,7 +80,7 @@ router.delete(
   ),
   (req, res) => {
     if (!Validator.isMongoId(req.params.id)) {
-      return res.status(400).json({invalidDocId: "Invalid document ID passed in request"})
+      return res.status(400).json({invalidDocId: "Invalid document ID passed in request"});
     }
     Profile.findOne({user: req.user.id})
       .then(profile => {
@@ -89,7 +89,7 @@ router.delete(
             if (expression.user.toString() !== req.user.id) {
               return res.status(401)
               .json({notAuthorized: 'User not authorized to delete this document'});
-            };
+            }
             expression.remove().then(() => {
               res.json({success: true});
             })
@@ -97,7 +97,7 @@ router.delete(
               err => res.status(404)
               .json({exprNotFound: "Could not find that document _id for deletion"})
             );
-          })
+          });
       })
   }
 );
