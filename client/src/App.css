@@ -1,0 +1,11 @@
+.landing {
+  position: relative;
+  background-color: #292b2e;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
