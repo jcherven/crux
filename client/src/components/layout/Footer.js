@@ -1,3 +1,7 @@
+/*******************************************************
+ * /client/src/components/layout/Footer.js
+ *******************************************************/
+
 import React from 'react';
 
 export default () => {

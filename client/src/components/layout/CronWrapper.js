@@ -1,3 +1,7 @@
+/*******************************************************
+ * /client/src/components/layout/CronWrapper.js
+ *******************************************************/
+
 import React, { Component } from 'react';
 
 class CronWrapper extends Component {
