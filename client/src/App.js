@@ -19,7 +19,7 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Route exact path="/" component={CronWrapper} />
-          <div className="Container">
+          <div className="container">
             <Route exact path="/reg" component={Reg} />
             <Route exact path="/login" component={Login} />
           </div>
