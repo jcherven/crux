@@ -12,11 +12,19 @@ class CronWrapper extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Crontab Magic
+                <h1 className="display-3 mb-4">
+                  Crontab Magic
                 </h1>
-                <p className="lead">Crux rocks tonic magic</p>
+                <p className="lead">
+                  Crux rocks tonic magic
+                </p>
                 <hr />
-                <a href="register.html" className="btn btn-lg btn-info mr-2">Gimme</a>
+                <a
+                  href="register.html"
+                  className="btn btn-lg btn-info mr-2"
+                >
+                  Gimme
+                </a>
               </div>
             </div>
           </div>

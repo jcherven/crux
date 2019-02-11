@@ -10,14 +10,26 @@ class Navbar extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <Link
+            className="navbar-brand"
+            to="/"
+          >
             Crux
           </Link>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
-            <span className="navbar-toggler-icon"></span>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#mobile-nav"
+          >
+            <span className="navbar-toggler-icon">
+            </span>
           </button>
 
-          <div className="collapse navbar-collapse" id="mobile-nav">
+          <div
+            className="collapse navbar-collapse"
+            id="mobile-nav"
+          >
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
               </li>
@@ -25,10 +37,20 @@ class Navbar extends Component {
 
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/Reg">Sign Up</Link>
+                <Link
+                  className="nav-link"
+                  to="/Reg"
+                >
+                  Sign Up
+                </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/Login">Login</Link>
+                <Link
+                  className="nav-link"
+                  to="/Login"
+                >
+                  Login
+                </Link>
               </li>
             </ul>
           </div>
