@@ -3,6 +3,7 @@
  *******************************************************/
 
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Reg extends Component {
   constructor() {
@@ -18,23 +19,26 @@ class Reg extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-
+  onSubmit(event) {
+    event.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      passwordConfirm: this.state.passwordConfirm
     }
-    console.log(newUser);
+    axios
+      .post('/api/users/reg', newUser)
+      .then(res => console.log(res))
+      .catch(err => this.setState({errors: err.response.data}));
   }
 
   render() {
+    const { errors } = this.state;
     return (
       <div className="register">
         <div className="container">
@@ -89,8 +93,8 @@ class Reg extends Component {
                     type="password"
                     className="form-control form-control-lg"
                     placeholder="Confirm Password"
-                    name="password2"
-                    value={this.state.password2}
+                    name="passwordConfirm"
+                    value={this.state.passwordConfirm}
                     onChange={this.onChange}
                   />
                 </div>
