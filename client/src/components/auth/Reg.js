@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
@@ -57,17 +58,20 @@ class Reg extends Component {
               <p className="lead text-center">
                 Register an account to save and recall your favorite cron expressions.
               </p>
-              <form onSubmit={this.onSubmit}>
+              <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
-                    className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.name
+                    })}
                     placeholder="Name"
                     name="name"
                     value={this.state.name}
                     onChange={this.onChange}
                     required
                   />
+                  {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                   <small className="form-text text-muted">
                     This name will be a handle displayed on your profile, as well as your profile's vanity URL.
                   </small>
@@ -75,12 +79,15 @@ class Reg extends Component {
                 <div className="form-group">
                   <input
                     type="email"
-                    className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.email
+                    })}
                     placeholder="Email Address"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}
                   />
+                  {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
                   <small className="form-text text-muted">
                     This email address will be your login identifier.
                   </small>
@@ -88,22 +95,28 @@ class Reg extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.password
+                    })}
                     placeholder="Password"
                     name="password"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
+                  {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
                 </div>
                 <div className="form-group">
                   <input
                     type="password"
-                    className="form-control form-control-lg"
+                    className={classnames('form-control form-control-lg', {
+                      'is-invalid': errors.passwordConfirm
+                    })}
                     placeholder="Confirm Password"
                     name="passwordConfirm"
                     value={this.state.passwordConfirm}
                     onChange={this.onChange}
                   />
+                  {errors.passwordConfirm && (<div className="invalid-feedback">{errors.passwordConfirm}</div>)}
                 </div>
                 <input
                   type="submit"
