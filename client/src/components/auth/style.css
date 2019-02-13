@@ -1,0 +1,11 @@
+.register, .login {
+  position: relative;
+  background-color: #292b2e;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
+}
+
+body {
+  background-color: #292b2e;
+}

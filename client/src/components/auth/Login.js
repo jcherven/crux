@@ -4,6 +4,8 @@
 
 import React, { Component } from 'react';
 
+import './style.css';
+
 class Login extends Component {
   constructor() {
     super();
@@ -35,7 +37,7 @@ class Login extends Component {
       <div className="login">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto text-light">
               <h1 className="display-4 text-center">
                 Log In
               </h1>

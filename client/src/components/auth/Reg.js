@@ -9,6 +9,8 @@ import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 
+import './style.css';
+
 class Reg extends Component {
   constructor() {
     super();
@@ -51,7 +53,7 @@ class Reg extends Component {
       <div className="register">
         <div className="container">
           <div className="row">
-            <div className="col-md-8 m-auto">
+            <div className="col-md-8 m-auto text-light">
               <h1 className="display-4 text-center">
                 Register
               </h1>
