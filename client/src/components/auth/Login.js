@@ -22,20 +22,38 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  /**
+   * Prevent a logged in user from reaching this login page again
+   * Handle a user logout click;
+   **/
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/');
+    }
+  }
+
+  /**
+   * If authentication is successful, redirect to the cron wrapper
+   **/
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push('/');
     }
-
     if (nextProps.errors) {
       this.setState({errors: nextProps.errors})
     }
   }
 
+  /**
+   * Display text as it's entered
+   **/
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  /**
+   * Handle login submission
+   **/
   onSubmit(event) {
     event.preventDefault();
 
@@ -91,9 +109,12 @@ class Login extends Component {
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
-                <input type="submit"
+                <button
+                  type="submit"
                   className="btn btn-info btn-block mt-4"
-                />
+                >
+                  Login
+                </button>
               </form>
             </div>
           </div>

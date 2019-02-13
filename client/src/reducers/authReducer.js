@@ -3,7 +3,6 @@
  *******************************************************/
 
 import { SET_CURRENT_USER } from '../actions/types';
-import isEmpty from '../validation/is-empty';
 
 const initialState = {
   isAuthenticated: false,
@@ -15,11 +14,23 @@ export default function(state = initialState, action) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.payload),
+        isAuthenticated: !fieldIsEmpty(action.payload),
         user: action.payload,
       }
     default:
       return state;
   }
+}  
+
+function fieldIsEmpty(value) {
+  if (
+    value === undefined ||
+    value === null ||
+    (typeof value === 'object' && Object.keys(value).length === 0) ||
+    (typeof value === 'string' && value.trim().length === 0)
+  )
+  return true;
 }
+
+
 

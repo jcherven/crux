@@ -25,6 +25,14 @@ class Reg extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  // Prevent a logged in user from reaching this reg page again
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/');
+    }
+  }
+
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({errors: nextProps.errors});
@@ -120,10 +128,12 @@ class Reg extends Component {
                   />
                   {errors.passwordConfirm && (<div className="invalid-feedback">{errors.passwordConfirm}</div>)}
                 </div>
-                <input
+                <button
                   type="submit"
                   className="btn btn-info btn-block mt-4"
-                />
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>

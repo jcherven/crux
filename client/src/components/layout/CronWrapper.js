@@ -20,7 +20,7 @@ class CronWrapper extends Component {
                 </p>
                 <hr />
                 <a
-                  href="register.html"
+                  href="#"
                   className="btn btn-lg btn-info mr-2"
                 >
                   Gimme
