@@ -1,9 +1,20 @@
-// test to see if this an action works
-import { TEST_DISPATCH } from './types';
+/*******************************************************
+ * /client/src/actions/authActions.js
+ *******************************************************/
 
-export const registerUser = (userData) => {
-  return {
-    type: TEST_DISPATCH,
-    payload: userData
-  };
+import { GET_ERRORS } from './types';
+import axios from 'axios';
+
+export const registerUser = (userData) => dispatch => {
+  axios
+    .post('/api/users/reg', userData)
+    .then(res => console.log(res))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+
+
 };
