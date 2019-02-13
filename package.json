@@ -1,35 +1,24 @@
 {
   "name": "crux",
   "version": "1.0.0",
-  "description": "A semantic crontab helper",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd client && yarn start",
-    "dev": "concurrently --kill-others \"nodemon\" \"npm run client\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jcherven/crux.git"
-  },
-  "author": "",
+  "main": "index.js",
+  "repository": "https://github.com/jcherven/crux.git",
+  "author": "James Cherven <jcherven@mail.usf.edu>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jcherven/crux/issues"
+  "scripts": {
+    "heroku-postbuild":"cd client && yarn && yarn run build"
+
   },
-  "homepage": "https://github.com/jcherven/crux#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
-    "classnames": "^2.2.6",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "github-username-regex": "^1.0.0",
-    "helmet": "^3.15.0",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.7",
+    "mongoose": "^5.4.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"
