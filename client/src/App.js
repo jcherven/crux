@@ -5,6 +5,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser } from './actions/authActions';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -13,6 +16,13 @@ import Footer from './components/layout/Footer';
 import CronWrapper from './components/layout/CronWrapper';
 import Reg from './components/auth/Reg';
 import Login from './components/auth/Login';
+
+// Check for client's valid auth token (login) at load
+if (localStorage.jwt) {
+  setAuthToken(localStorage.jwt);
+  const decoded = jwt_decode(localStorage.jwt);
+  store.dispatch(setCurrentUser(decoded));
+}
 
 class App extends Component {
   render() {
