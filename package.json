@@ -1,27 +1,36 @@
 {
-  "name": "crux",
+  "name": "crux-server",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/jcherven/crux.git",
-  "author": "James Cherven <jcherven@mail.usf.edu>",
-  "license": "MIT",
+  "description": "Server for Crux, the semantic crontab helper",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "cd client && nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "James Cherven",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "if-env": "^1.0.4",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "classnames": "^2.2.6",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "github-username-regex": "^1.0.0",
+    "helmet": "^3.15.0",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.4.11",
+    "mongoose": "^5.4.7",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"
