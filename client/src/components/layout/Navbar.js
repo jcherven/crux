@@ -18,7 +18,7 @@ class Navbar extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth;
 
     /**
      *

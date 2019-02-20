@@ -43,7 +43,7 @@ class CronWrapper extends Component {
                 <div className="">
                 </div>
                 <p className="lead">
-                  Crux, rocks, tonic, magic
+                  Crux rocks tonic magic
                 </p>
                 <hr />
                 <a
