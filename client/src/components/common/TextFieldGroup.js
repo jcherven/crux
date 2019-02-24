@@ -1,5 +1,5 @@
 /*******************************************************
- * /client/src/components/auth/Login.js
+ * /client/src/components/common/TextFieldGroup.js
  *******************************************************/
 
 import React from 'react';
