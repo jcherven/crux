@@ -14,12 +14,19 @@ const ProfileSchema = new Schema({
   vanityUrl: {
     type: String,
     required: true,
-    max: 32
+    min:3,
+    max: 32,
   },
   website: {
     type: String,
   },
-  githubUserName: {
+  github: {
+    type: String,
+  },
+  gitlab: {
+    type: String,
+  },
+  bitbucket: {
     type: String,
   },
   date: {

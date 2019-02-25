@@ -20,6 +20,7 @@ import CronWrapper from './components/layout/CronWrapper';
 import Reg from './components/auth/Reg';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/create-profile/CreateProfile';
 
 // Check for client's valid auth token (login) at load
 if (localStorage.jwt) {
@@ -48,6 +49,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/create-profile" component={CreateProfile} />
               </Switch>
             </div>
             <Footer />

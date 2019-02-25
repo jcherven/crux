@@ -113,7 +113,8 @@ router.post(
     profileFields.name = req.user.name;
     if (req.body.vanityUrl) profileFields.vanityUrl = req.body.vanityUrl;
     if (req.body.website) profileFields.website = req.body.website;
-    if (req.body.githubUserName) profileFields.githubUserName = req.body.githubUserName;
+    if (req.body.github) profileFields.github = req.body.github;
+    if (req.body.twitter) profileFields.twitter = req.body.twitter;
 
     Profile.findOne({ user: req.user.id })
       .then(profile => {

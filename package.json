@@ -19,7 +19,6 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "if-env": "^1.0.4",
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -29,10 +28,12 @@
     "express": "^4.16.4",
     "github-username-regex": "^1.0.0",
     "helmet": "^3.15.0",
+    "if-env": "^1.0.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.7",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "twitter-validate": "^1.0.8",
     "validator": "^10.11.0"
   }
 }
