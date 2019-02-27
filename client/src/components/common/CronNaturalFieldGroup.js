@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
 const CronNaturalFieldGroup = ({
   name,
   placeholder,
+  bgColor,
   value,
-  error,
   icon,
   type,
   onChange,
@@ -18,15 +18,13 @@ const CronNaturalFieldGroup = ({
   return (
     <div>
       <input
-        className={classnames("form-control form-control-lg", { 'is-invalid': error })}
+        className={classnames("form-control", "form-control-lg", "text-dark", bgColor)}
         placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
         disabled
       />
-      {error &&
-        <div className="invalid-feedback">{error}</div>
       }
     </div>
   )
@@ -35,9 +33,9 @@ const CronNaturalFieldGroup = ({
 CronNaturalFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  bgcolor: PropTypes.string,
   value: PropTypes.string.isRequired,
   icon: PropTypes.string,
-  error: PropTypes.string,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 }

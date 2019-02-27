@@ -43,35 +43,35 @@ class CronExp extends Component {
                   <div className="input-group mx-auto mb-3">
                     <code className="bg-dark display-3 p-3">
                       <span
-                        className="minute"
+                        className="minute text-primary"
                         value={this.state.minute}
                       >
                         {this.state.minute}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="hour"
+                        className="hour text-success"
                         value={this.state.hour}
                       >
                         {this.state.hour}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek"
+                        className="dayOfMonth text-info"
                         value={this.state.dayOfMonth}
                       >
                         {this.state.dayOfMonth}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="month"
+                        className="month text-warning"
                         value={this.state.month}
                       >
                         {this.state.month}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek"
+                        className="dayOfWeek text-danger"
                         value={this.state.dayOfWeek}
                       >
                         {this.state.dayOfWeek}
@@ -98,7 +98,6 @@ class CronExp extends Component {
                   <div className="col-md-4">
                     <InputGroup
                       placeholder="minute"
-                      bgColor="bg-primary"
                       name="minute"
                       icon="fas fa-stopwatch"
                       value={this.state.minute}
@@ -111,6 +110,7 @@ class CronExp extends Component {
                   >
                     <CronNaturalFieldGroup
                       placeholder="minute"
+                      bgColor="bg-primary"
                       name="naturalMinute"
                       value={this.state.naturalMinute}
                       error={errors.naturalMinute}
@@ -133,6 +133,7 @@ class CronExp extends Component {
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
                       placeholder="hour"
+                      bgColor="bg-success"
                       name="naturalHour"
                       value={this.state.naturalHour}
                       error={errors.naturalHour}
@@ -154,6 +155,7 @@ class CronExp extends Component {
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
                       placeholder="day of month"
+                      bgColor="bg-info"
                       name="naturalDom"
                       value={this.state.naturalDom}
                       error={errors.naturalDom}
@@ -175,6 +177,7 @@ class CronExp extends Component {
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
                       placeholder="month"
+                      bgColor="bg-warning"
                       name="naturalMonth"
                       value={this.state.naturalMonth}
                       error={errors.naturalMonth}
@@ -196,6 +199,7 @@ class CronExp extends Component {
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
                       placeholder="day of week"
+                      bgColor="bg-danger"
                       name="naturalDow"
                       value={this.state.naturalDow}
                       error={errors.naturalDow}
