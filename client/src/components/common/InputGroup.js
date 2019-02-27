@@ -18,7 +18,7 @@ const InputGroup = ({
   return (
     <div className="input-group mb-3">
       <div className="input-group-prepend">
-        <span className="input-group-text">
+        <span className="input-group-text bg-secondary">
           <i className={icon}></i>
         </span>
       </div>
