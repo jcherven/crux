@@ -6,8 +6,7 @@ import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-
-class AddCronExp extends Component {
+class CronExp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -142,7 +141,7 @@ class AddCronExp extends Component {
   }
 }
 
-AddCronExp.propTypes = {
+CronExp.propTypes = {
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 }
@@ -152,4 +151,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 })
 
-export default connect(mapStateToProps)(withRouter(AddCronExp))
+export default connect(mapStateToProps)(withRouter(CronExp))

@@ -22,7 +22,7 @@ import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
-import AddCronExp from './components/add-cronexp/AddCronExp';
+import CronExp from './components/cronexp/CronExp';
 
 // Check for client's valid auth token (login) at load
 if (localStorage.jwt) {
@@ -45,7 +45,7 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={AddCronExp} />
+            <Route exact path="/" component={CronExp} />
             <div className="container">
               <Route exact path="/reg" component={Reg} />
               <Route exact path="/login" component={Login} />
@@ -70,7 +70,7 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact path="/add-cron-exp"
-                  component={AddCronExp}
+                  component={CronExp}
                 />
               </Switch>
             </div>
