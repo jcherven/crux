@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-}  
+}
 
 function fieldIsEmpty(value) {
   if (

@@ -1,5 +1,5 @@
 /*******************************************************
- * /client/src/components/create-profile/CreateProfile.js
+ * /client/src/components/create-profile/EditProfile.js
  *******************************************************/
 
 import React, { Component } from 'react';
@@ -11,7 +11,7 @@ import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
 
-import { createProfile } from '../../actions/profileActions';
+import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -30,9 +30,31 @@ class CreateProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getCurrentProfile();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({errors: nextProps.errors})
+    }
+
+    if (nextProps.profile.profile) {
+      const profile = nextProps.profile.profile;
+
+      profile.vanityUrl = !profile.vanityUrl ? '' : profile.vanityUrl;
+      profile.website = !profile.website ? '' : profile.website;
+      profile.github = !profile.github ? '' : profile.github;
+      profile.twitter = !profile.twitter ? '' : profile.twitter;
+      profile.bio = !profile.bio ? '' : profile.bio;
+
+      this.setState({
+        vanityUrl: profile.vanityUrl,
+        website: profile.website,
+        github: profile.github,
+        twitter: profile.twitter,
+        bio: profile.bio
+      })
     }
   }
 
@@ -93,10 +115,7 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto text-light">
-              <h1 className="display-4 text-center">Create a Profile</h1>
-              <p className="lead text-center">
-                Creating a profile will allow you to save your crontab expressions. You can then reference them later or share them with other users.
-              </p>
+              <h1 className="display-4 text-center">Edit your Profile</h1>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="Vanity URL"
@@ -137,15 +156,17 @@ class CreateProfile extends Component {
 };
 
 CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  errors: state.errors,
+  errors: state.errors
 });
 
-export default connect(mapStateToProps, { createProfile })(
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
   withRouter(CreateProfile)
 );

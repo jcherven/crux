@@ -115,6 +115,7 @@ router.post(
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.github) profileFields.github = req.body.github;
     if (req.body.twitter) profileFields.twitter = req.body.twitter;
+    if (req.body.bio) profileFields.bio = req.body.bio;
 
     Profile.findOne({ user: req.user.id })
       .then(profile => {

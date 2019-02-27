@@ -4,7 +4,7 @@
 
 import axios from 'axios';
 
-import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE, GET_ERRORS } from './types';
+import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE, GET_ERRORS, SET_CURRENT_USER } from './types';
 
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
@@ -35,6 +35,22 @@ export const createProfile = (profileData, history) => dispatch => {
     )
 }
 
+export const deleteAccount = () => dispatch => {
+  if (window.confirm('Delete this account? you sure? This deletion cannot be undone')) {
+    axios
+      .delete('/api/profile')
+      .then(res =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {},
+        })
+      ).catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data,
+        }))
+  }
+}
 
 export const setProfileLoading = () => {
   return {

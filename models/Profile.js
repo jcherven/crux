@@ -17,16 +17,16 @@ const ProfileSchema = new Schema({
     min:3,
     max: 32,
   },
+  bio: {
+    type: String,
+  },
   website: {
     type: String,
   },
   github: {
     type: String,
   },
-  gitlab: {
-    type: String,
-  },
-  bitbucket: {
+  twitter: {
     type: String,
   },
   date: {

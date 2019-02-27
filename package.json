@@ -1,7 +1,7 @@
 {
   "name": "crux-server",
   "version": "1.0.0",
-  "description": "Server for Crux, the semantic crontab helper",
+  "description": "API server for Crux, the semantic crontab helper",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

@@ -28,6 +28,13 @@ class Navbar extends Component {
     const authenticatedMenu = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link
+            className="nav-link"
+            to="/dashboard">
+            {user.name}
+          </Link>
+        </li>
+        <li className="nav-item">
           <a
             href="#"
             onClick={this.onLogoutClick.bind(this)}

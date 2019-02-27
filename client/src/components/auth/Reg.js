@@ -17,7 +17,7 @@ class Reg extends Component {
       name: '',
       email: '',
       password: '',
-      password2: '',
+      passwordConfirm: '',
       errors: {}
     }
     this.onChange = this.onChange.bind(this);
@@ -92,11 +92,11 @@ class Reg extends Component {
                 />
                 <TextFieldGroup
                   placeholder="Confirm Password"
-                  name="confirmPassword"
+                  name="passwordConfirm"
                   type="password"
-                  value={this.state.confirmPassword}
+                  value={this.state.passwordConfirm}
                   onChange={this.onChange}
-                  error={errors.confirmPassword}
+                  error={errors.passwordConfirm}
                 />
                 <button
                   type="submit"
