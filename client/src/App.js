@@ -16,7 +16,6 @@ import PrivateRoute from './components/common/PrivateRoute';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import CronWrapper from './components/layout/CronWrapper';
 import Reg from './components/auth/Reg';
 import Login from './components/auth/Login';
 import Dashboard from './components/dashboard/Dashboard';
