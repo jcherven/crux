@@ -33,37 +33,40 @@ class AddCronExp extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
-
               <div className="form-row justify-content-center">
                 <div className="form-group col-md-16">
                   <div className="input-group mx-auto mb-3">
                     <code className="bg-dark display-3 p-3">
                       <span
-                        className="minute mx-3"
+                        className="minute"
                         value={this.state.minute}
                       >
                         {this.state.minute}
                       </span>
+                      <span className="cron-space"> </span>
                       <span
-                        className="hour mx-3"
+                        className="hour"
                         value={this.state.hour}
                       >
                         {this.state.hour}
                       </span>
+                      <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek mx-3"
+                        className="dayOfWeek"
                         value={this.state.dayOfMonth}
                       >
                         {this.state.dayOfMonth}
                       </span>
+                      <span className="cron-space"> </span>
                       <span
-                        className="month mx-3"
+                        className="month"
                         value={this.state.month}
                       >
                         {this.state.month}
                       </span>
+                      <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek mx-3"
+                        className="dayOfWeek"
                         value={this.state.dayOfWeek}
                       >
                         {this.state.dayOfWeek}
