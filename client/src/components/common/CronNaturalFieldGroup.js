@@ -25,7 +25,6 @@ const CronNaturalFieldGroup = ({
         onChange={onChange}
         disabled
       />
-      }
     </div>
   )
 }

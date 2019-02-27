@@ -100,6 +100,7 @@ class CronExp extends Component {
                       placeholder="minute"
                       name="minute"
                       icon="fas fa-stopwatch"
+                      iconColor="bg-primary"
                       value={this.state.minute}
                       onChange={this.onChange}
                       error={errors.minute}
@@ -125,6 +126,7 @@ class CronExp extends Component {
                       placeholder="hour"
                       name="hour"
                       icon="far fa-clock"
+                      iconColor="bg-success"
                       value={this.state.hour}
                       onChange={this.onChange}
                       error={errors.hour}
@@ -147,6 +149,7 @@ class CronExp extends Component {
                       placeholder="day of month"
                       name="dayOfMonth"
                       icon="fas fa-calendar-day"
+                      iconColor="bg-info"
                       value={this.state.dayOfMonth}
                       onChange={this.onChange}
                       error={errors.dayOfMonth}
@@ -169,6 +172,7 @@ class CronExp extends Component {
                       placeholder="month"
                       name="month"
                       icon="far fa-calendar"
+                      iconColor="bg-warning"
                       value={this.state.month}
                       onChange={this.onChange}
                       error={errors.month}
@@ -191,6 +195,7 @@ class CronExp extends Component {
                       placeholder="day of the week"
                       name="dayOfWeek"
                       icon="fas fa-calendar-week"
+                      iconColor="bg-danger"
                       value={this.state.dayOfWeek}
                       onChange={this.onChange}
                       error={errors.dayOfWeek}

@@ -12,13 +12,14 @@ const InputGroup = ({
   value,
   error,
   icon,
+  iconColor,
   type,
   onChange,
 }) => {
   return (
     <div className="input-group mb-3">
       <div className="input-group-prepend">
-        <span className="input-group-text bg-secondary">
+        <span className={classnames("input-group-text", iconColor)}>
           <i className={icon}></i>
         </span>
       </div>
@@ -41,6 +42,7 @@ InputGroup.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
   icon: PropTypes.string,
+  iconColor: PropTypes.string,
   error: PropTypes.string,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
