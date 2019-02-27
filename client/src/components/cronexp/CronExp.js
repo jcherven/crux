@@ -43,35 +43,35 @@ class CronExp extends Component {
                   <div className="input-group mx-auto mb-3">
                     <code className="bg-dark display-3 p-3">
                       <span
-                        className="minute text-primary"
+                        className="minute"
                         value={this.state.minute}
                       >
                         {this.state.minute}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="hour text-success"
+                        className="hour"
                         value={this.state.hour}
                       >
                         {this.state.hour}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek text-danger"
+                        className="dayOfWeek"
                         value={this.state.dayOfMonth}
                       >
                         {this.state.dayOfMonth}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="month text-warning"
+                        className="month"
                         value={this.state.month}
                       >
                         {this.state.month}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek text-info"
+                        className="dayOfWeek"
                         value={this.state.dayOfWeek}
                       >
                         {this.state.dayOfWeek}
