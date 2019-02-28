@@ -1,15 +1,17 @@
 /*******************************************************
- * /client/src/components/cronexp/CronExp.js
+ * /client/src/components/cronexp/CreateCronExp.js
  *******************************************************/
 
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import InputGroup from '../common/InputGroup';
-import CronNaturalFieldGroup from '../common/CronNaturalFieldGroup';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-class CronExp extends Component {
+import InputGroup from '../common/InputGroup';
+import CronNaturalFieldGroup from '../common/CronNaturalFieldGroup';
+import { CronExp } from '../../actions/profileActions';
+
+class CreateCronExp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,9 +25,24 @@ class CronExp extends Component {
       naturalDom: 'every day',
       naturalMonth: 'every month',
       naturalDow: 'every day of the week',
+      disabled: false,
       errors: {},
     }
     this.onChange = this.onChange.bind(this);
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    const cronData = {
+      minute: this.state.minute,
+      hour: this.state.hour,
+      dayOfMonth: this.state.dayOfMonth,
+      month: this.state.month,
+      dayOfWeek: this.state.dayOfWeek,
+    }
+
+    this.props.CronExp(cronData, this.props.history);
   }
 
   onChange(event) {
@@ -34,6 +51,7 @@ class CronExp extends Component {
 
   render() {
     const { errors } = this.state;
+    const { isAuthenticated, user } = this.props.auth;
 
     return (
       <div className="add-cron-exp">
@@ -43,6 +61,7 @@ class CronExp extends Component {
               <div className="form-row justify-content-center">
                 <div className="form-group col-md-16">
                   <div className="input-group mx-auto mb-3">
+
                     <code className="bg-dark display-3 p-3">
                       <span
                         className="minute text-primary"
@@ -87,6 +106,7 @@ class CronExp extends Component {
                       >
                         Copy
                       </button>
+
                     </div>
                   </div>
                 </div>
@@ -94,8 +114,8 @@ class CronExp extends Component {
 
             </div>
             <div className="col-md-6 m-auto">
-              <form onSubmit={this.onSubmit}>
 
+              <form onSubmit={this.onSubmit}>
                 <div className="row">
                   <div className="col-md-4">
                     <InputGroup
@@ -218,8 +238,10 @@ class CronExp extends Component {
                   className="btn btn-info btn-block mt-4"
                   type="submit"
                   value="Save this cron expression"
+                  disabled={isAuthenticated ? '' : 'disabled'}
                 />
               </form>
+
             </div>
           </div>
         </div>
@@ -228,14 +250,16 @@ class CronExp extends Component {
   }
 }
 
-CronExp.propTypes = {
+CreateCronExp.propTypes = {
   profile: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
   profile: state.profile,
+  auth: state.auth,
   errors: state.errors,
 })
 
-export default connect(mapStateToProps)(withRouter(CronExp))
+export default connect(mapStateToProps, { CreateCronExp })(withRouter(CreateCronExp))

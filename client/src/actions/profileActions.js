@@ -35,6 +35,18 @@ export const createProfile = (profileData, history) => dispatch => {
     )
 }
 
+export const CronExp = (cronData, history) => dispatch => {
+  axios
+    .post('/api/profile/Cronexp', cronData)
+    .then(res => history.push('/dashboard'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      })
+    )
+}
+
 export const deleteAccount = () => dispatch => {
   if (window.confirm('Delete this account? you sure? This deletion cannot be undone')) {
     axios
