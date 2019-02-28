@@ -9,6 +9,7 @@ const passport = require('passport');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const CronExp = require('../../models/CronExp');
 
 const validateProfileInput = require('../../validation/profile');
 
@@ -139,7 +140,9 @@ router.post(
 );
 
 /**
- *
+ * @route   POST /api/profile/cronexp
+ * @desc    Adds a cronexpression to the authenticated user's profile
+ * @access  Private
  **/
 router.post('/cronexp', passport.authenticate('jwt', {session: false}), (req, res) => {
   Profile.findOne({ user: req.user.id })
@@ -147,7 +150,7 @@ router.post('/cronexp', passport.authenticate('jwt', {session: false}), (req, re
       const newCronExp = {
         minute: req.body.minute,
         hour: req.body.hour,
-        dayOfWeek: req.body.dayOfWeek,
+        dayOfMonth: req.body.dayOfMonth,
         month: req.body.month,
         dayOfWeek: req.body.dayOfWeek,
         naturalMinute: this.state.naturalMinute,
@@ -156,10 +159,10 @@ router.post('/cronexp', passport.authenticate('jwt', {session: false}), (req, re
         naturalMonth: this.state.naturalMonth,
         naturalDow: this.state.naturalDow,
       }
-      profile.cronExp.unshift(newCronExp);
-      profile.save().then(profile => res.json(profile));
-    })
-})
+      new cronExp(newCronExp).save()
+        .then(newCronExp => res.json(newCronExp));
+    });
+});
 
 /**************************************
  * @route       DELETE /api/profile

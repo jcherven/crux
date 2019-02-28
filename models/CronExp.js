@@ -1,5 +1,5 @@
 /**************************************
- * /models/Expression.js
+ * /models/CronExp.js
  **************************************/
 
 const mongoose = require('mongoose');
@@ -23,7 +23,7 @@ const Schema = mongoose.Schema;
  *             5#2 means second Fri of month
  *************************************************************/
 
-const ExprSchema = new Schema({
+const CronExprSchema = new Schema({
   minute: {
     type: String,
     required: true,
@@ -44,9 +44,20 @@ const ExprSchema = new Schema({
     type: String,
     required: true,
   },
-  description: {
+  naturalMinute: {
     type: String,
-    required: true,
+  },
+  naturalHour: {
+    type: String,
+  },
+  naturalDom: {
+    type: String,
+  },
+  naturalMonth: {
+    type: String,
+  },
+  naturalDow: {
+    type: String,
   },
   user: {
     type: Schema.Types.ObjectId,
@@ -58,4 +69,4 @@ const ExprSchema = new Schema({
   },
 });
 
-module.exports = Post = mongoose.model('expression', ExprSchema);
+module.exports = Post = mongoose.model('cronExp', CronExprSchema);
