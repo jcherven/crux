@@ -2,7 +2,12 @@
  * /client/src/reducers/profileReducer.js
  *******************************************************/
 
-import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE } from '../actions/types';
+import {
+  GET_PROFILE,
+  GET_PROFILES,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE } from '../actions/types';
+
 const initialState = {
   profile: null,
   profiles: null,
@@ -14,18 +19,24 @@ export default function(state = initialState, action) {
     case PROFILE_LOADING:
       return {
         ...state,
-        loading:true
+        loading:true,
       }
     case GET_PROFILE:
       return {
         ...state,
         profile: action.payload,
-        loading: false
+        loading: false,
+      }
+    case GET_PROFILES:
+      return {
+        ...state,
+        profiles: action.payload,
+        loading: false,
       }
     case CLEAR_CURRENT_PROFILE:
       return {
         ...state,
-        profile: null
+        profile: null,
       }
     default:
       return state;

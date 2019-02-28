@@ -22,6 +22,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
 import CreateCronExp from './components/cronexp/CreateCronExp';
+import Profiles from './components/profiles/Profiles';
 
 // Check for client's valid auth token (login) at load
 if (localStorage.jwt) {
@@ -48,6 +49,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/reg" component={Reg} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
               <Switch>
                 <PrivateRoute
                   exact path="/dashboard"
