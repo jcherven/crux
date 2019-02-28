@@ -464,6 +464,11 @@ create-error-class@^3.0.0:
   dependencies:
     capture-stack-trace "^1.0.0"
 
+cronstrue@^1.63.0:
+  version "1.63.0"
+  resolved "https://registry.yarnpkg.com/cronstrue/-/cronstrue-1.63.0.tgz#826ccbef5c066e69d898806d78ce767e538c962c"
+  integrity sha512-co8UYSOgKASAablGXCsAoeWOHxsEFD4R2YIHozEWf8xsBMlvuz0U8rh15be0bo5Z5hLDppZw6lHYnAw65lVILw==
+
 cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"

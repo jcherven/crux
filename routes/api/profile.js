@@ -138,6 +138,29 @@ router.post(
   }
 );
 
+/**
+ *
+ **/
+router.post('/cronexp', passport.authenticate('jwt', {session: false}), (req, res) => {
+  Profile.findOne({ user: req.user.id })
+    .then(profile => {
+      const newCronExp = {
+        minute: req.body.minute,
+        hour: req.body.hour,
+        dayOfWeek: req.body.dayOfWeek,
+        month: req.body.month,
+        dayOfWeek: req.body.dayOfWeek,
+        naturalMinute: this.state.naturalMinute,
+        naturalHour: this.state.naturalHour,
+        naturalDom: this.state.naturalDom,
+        naturalMonth: this.state.naturalMonth,
+        naturalDow: this.state.naturalDow,
+      }
+      profile.cronExp.unshift(newCronExp);
+      profile.save().then(profile => res.json(profile));
+    })
+})
+
 /**************************************
  * @route       DELETE /api/profile
  * @desc        Delete currently authenticated user and profile

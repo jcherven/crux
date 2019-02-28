@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 import InputGroup from '../common/InputGroup';
 import CronNaturalFieldGroup from '../common/CronNaturalFieldGroup';
-import { CronExp } from '../../actions/profileActions';
+import { createCronExp } from '../../actions/profileActions';
 
 class CreateCronExp extends Component {
   constructor(props) {
@@ -29,20 +29,32 @@ class CreateCronExp extends Component {
       errors: {},
     }
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onSubmit(event) {
     event.preventDefault();
 
-    const cronData = {
+    const cronExpData = {
       minute: this.state.minute,
       hour: this.state.hour,
       dayOfMonth: this.state.dayOfMonth,
       month: this.state.month,
       dayOfWeek: this.state.dayOfWeek,
+      naturalMinute: this.state.naturalMinute,
+      naturalHour: this.state.naturalHour,
+      naturalDom: this.state.naturalDom,
+      naturalMonth: this.state.naturalMonth,
+      naturalDow: this.state.naturalDow,
     }
 
-    this.props.CronExp(cronData, this.props.history);
+    this.props.createCronExp(cronExpData, this.props.history);
   }
 
   onChange(event) {
@@ -240,6 +252,7 @@ class CreateCronExp extends Component {
                   value="Save this cron expression"
                   disabled={isAuthenticated ? '' : 'disabled'}
                 />
+                <small></small>
               </form>
 
             </div>
@@ -251,6 +264,7 @@ class CreateCronExp extends Component {
 }
 
 CreateCronExp.propTypes = {
+  createCronExp: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
@@ -262,4 +276,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 })
 
-export default connect(mapStateToProps, { CreateCronExp })(withRouter(CreateCronExp))
+export default connect(mapStateToProps, { createCronExp })(withRouter(CreateCronExp))

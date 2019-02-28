@@ -10,7 +10,7 @@ const passport = require('passport');
 const Validator = require('validator');
 
 const Expression = require('../../models/Expression');
-const validateExprInput = require('../../validation/expression.js');
+const naturalizeCronExp = require('../../cronMagic/naturalizeCron.js');
 
 /***************************************
  * @route       GET /api/expression
