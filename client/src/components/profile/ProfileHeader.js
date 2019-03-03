@@ -2,9 +2,54 @@ import React, { Component } from 'react';
 
 class ProfileHeader extends Component {
   render() {
+    const { profile } = this.props;
+
     return (
       <div>
-        <h1>profile header</h1>
+        <div className='row'>
+          <div className='col-md-12 text-light'>
+            <card className='card card-body bg-info text-white mb-3'>
+              <div className='row'>
+                <div className='text-center'>
+                  <h3 className='display-4 text-center'>
+                    {profile.user.name}
+                  </h3>
+                  <p>
+                    {profile.website = !profile.website ? null : (
+                      <a
+                        className='text-white p-2'
+                        href={profile.website}
+                        target='_blank'
+                      >
+                        <i className="fas fa-external-link-alt fa-2x" />
+                      </a>
+                    )}
+
+                    {profile.twitter = !profile.twitter ? null : (
+                      <a
+                        className='text-white p-2'
+                        href={profile.twitter}
+                        target='_blank'
+                      >
+                        <i className="fab fa-twitter fa-2x" />
+                      </a>
+                    )}
+                    {profile.github = !profile.github ? null : (
+                      <a
+                        className='text-white p-2'
+                        href={profile.github}
+                        target='_blank'
+                      >
+                        <i className="fab fa-github fa-2x" />
+                      </a>
+                    )}
+                  </p>
+
+                </div>
+              </div>
+            </card>
+          </div>
+        </div>
       </div>
     )
   }

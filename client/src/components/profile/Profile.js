@@ -17,11 +17,38 @@ class Profile extends Component {
   }
 
   render() {
+    const { profile, loading } = this.props.profile;
+    let profileContent;
+
+    if (profile === null || loading) {
+      profileContent = <h4>loading...</h4>
+    } else {
+      profileContent = (
+        <div>
+          <div className="row">
+            <div className="col-md-6 text-light">
+              <Link to='/profiles' className="btn btn-info mb-3 float-left">
+                Back to profiles
+              </Link>
+            </div>
+            <div className="col-md-6 text-light">
+              <ProfileHeader profile={profile} />
+              <ProfileAbout />
+              <ProfileCronExps />
+            </div>
+          </div>
+        </div>
+      )
+    }
     return (
-      <div>
-        <ProfileHeader />
-        <ProfileAbout />
-        <ProfileCronExps />
+      <div className='profile'>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              {profileContent}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
