@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profileActions';
 
 class Profiles extends Component {
@@ -16,7 +17,9 @@ class Profiles extends Component {
       profileItems = <span>loading...</span>;
     } else {
       if (profiles.length > 0) {
-        profileItems = <h1>profiles here</h1>
+        profileItems = profiles.map(profile => (
+          <ProfileItem key={profile._id} profile={profile} />
+        ))
       } else {
         profileItems = <h4>No profiles found</h4>
       }
@@ -26,7 +29,7 @@ class Profiles extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center">
+              <h1 className="display-4 text-center text-light">
                 <p className="lead text-center">
                   other users profiles
                 </p>
