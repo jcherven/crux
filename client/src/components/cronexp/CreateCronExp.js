@@ -42,16 +42,16 @@ class CreateCronExp extends Component {
     event.preventDefault();
 
     const cronExpData = {
-      machineMinute: this.state.minute,
-      machineHour: this.state.hour,
-      machineDow: this.state.dayOfMonth,
-      machineMonth: this.state.month,
-      machineDow: this.state.dayOfWeek,
-      humanMinute: this.state.naturalMinute,
-      humanHour: this.state.naturalHour,
-      humanDom: this.state.naturalDom,
-      humanMonth: this.state.naturalMonth,
-      humanDow: this.state.naturalDow,
+      machineMinute: this.state.machineMinute,
+      machineHour: this.state.machineHour,
+      machineDom: this.state.machineDom,
+      machineMonth: this.state.machineMonth,
+      machineDow: this.state.machineDow,
+      humanMinute: this.state.humanMinute,
+      humanHour: this.state.humanHour,
+      humanDom: this.state.humanDom,
+      humanMonth: this.state.humanMonth,
+      humanDow: this.state.humanDow,
     }
 
     this.props.createCronExp(cronExpData, this.props.history);
@@ -125,9 +125,12 @@ class CreateCronExp extends Component {
               </div>
 
             </div>
-            <div className="col-md-6 m-auto">
 
+            {/* Cron expression editing area */}
+            <div className="col-md-6 m-auto">
               <form onSubmit={this.onSubmit}>
+
+                {/* Minute Row */}
                 <div className="row">
                   <div className="col-md-4">
                     <InputGroup
@@ -140,9 +143,7 @@ class CreateCronExp extends Component {
                       error={errors.minute}
                     />
                   </div>
-                  <div
-                    className="col-md-8"
-                  >
+                  <div className="col-md-8">
                     <CronNaturalFieldGroup
                       placeholder="human readable minute"
                       bgColor="bg-primary"
@@ -154,6 +155,7 @@ class CreateCronExp extends Component {
                   </div>
                 </div>
 
+                {/* Hour Row */}
                 <div className="row">
                   <div className="col-md-4">
                     <InputGroup
@@ -177,6 +179,8 @@ class CreateCronExp extends Component {
                     />
                   </div>
                 </div>
+
+                {/* Day of Month Row */}
                 <div className="row">
                   <div className="col-md-4">
                     <InputGroup
@@ -200,6 +204,8 @@ class CreateCronExp extends Component {
                     />
                   </div>
                 </div>
+                {/* Month Row */}
+
                 <div className="row">
                   <div className="col-md-4">
                     <InputGroup
@@ -223,6 +229,8 @@ class CreateCronExp extends Component {
                     />
                   </div>
                 </div>
+
+                {/* Month Row */}
                 <div className="row">
                   <div className="col-md-4">
                     <InputGroup
@@ -249,7 +257,7 @@ class CreateCronExp extends Component {
                 <input
                   className="btn btn-info btn-block mt-4"
                   type="submit"
-                  value="Save this cron expression"
+                  value={isAuthenticated ? "Save this crontab to your profile" : "Register an account to save this crontab"}
                   disabled={isAuthenticated ? '' : 'disabled'}
                 />
                 <small></small>

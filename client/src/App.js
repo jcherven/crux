@@ -72,7 +72,7 @@ class App extends Component {
               </Switch>
               <Switch>
                 <PrivateRoute
-                  exact path="/create-cron-exp"
+                  exact path="/cronexp"
                   component={CreateCronExp}
                 />
               </Switch>
