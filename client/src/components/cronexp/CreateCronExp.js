@@ -15,16 +15,16 @@ class CreateCronExp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      minute: '*',
-      hour: '*',
-      dayOfMonth: '*',
-      month: '*',
-      dayOfWeek: '*',
-      naturalMinute: 'every minute',
-      naturalHour: 'every hour',
-      naturalDom: 'every day',
-      naturalMonth: 'every month',
-      naturalDow: 'every day of the week',
+      machineMinute: '*',
+      machineHour: '*',
+      machineDom: '*',
+      machineMonth: '*',
+      machineDow: '*',
+      humanMinute: 'every minute',
+      humanHour: 'every hour',
+      humanDom: 'every day',
+      humanMonth: 'every month',
+      humanDow: 'every day of the week',
       disabled: false,
       errors: {},
     }
@@ -42,16 +42,16 @@ class CreateCronExp extends Component {
     event.preventDefault();
 
     const cronExpData = {
-      minute: this.state.minute,
-      hour: this.state.hour,
-      dayOfMonth: this.state.dayOfMonth,
-      month: this.state.month,
-      dayOfWeek: this.state.dayOfWeek,
-      naturalMinute: this.state.naturalMinute,
-      naturalHour: this.state.naturalHour,
-      naturalDom: this.state.naturalDom,
-      naturalMonth: this.state.naturalMonth,
-      naturalDow: this.state.naturalDow,
+      machineMinute: this.state.minute,
+      machineHour: this.state.hour,
+      machineDow: this.state.dayOfMonth,
+      machineMonth: this.state.month,
+      machineDow: this.state.dayOfWeek,
+      humanMinute: this.state.naturalMinute,
+      humanHour: this.state.naturalHour,
+      humanDom: this.state.naturalDom,
+      humanMonth: this.state.naturalMonth,
+      humanDow: this.state.naturalDow,
     }
 
     this.props.createCronExp(cronExpData, this.props.history);
@@ -66,7 +66,7 @@ class CreateCronExp extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     return (
-      <div className="add-cron-exp">
+      <div className="machineCronDisplay">
         <div className="container">
           <div className="row">
             <div className="col-md-12 text-center">
@@ -76,38 +76,38 @@ class CreateCronExp extends Component {
 
                     <code className="bg-dark display-3 p-3">
                       <span
-                        className="minute text-primary"
-                        value={this.state.minute}
+                        className="machineMinute text-primary"
+                        value={this.state.machineMinute}
                       >
-                        {this.state.minute}
+                        {this.state.machineMinute}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="hour text-success"
-                        value={this.state.hour}
+                        className="machineHour text-success"
+                        value={this.state.machineHour}
                       >
-                        {this.state.hour}
+                        {this.state.machineHour}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="dayOfMonth text-info"
-                        value={this.state.dayOfMonth}
+                        className="machineDom text-info"
+                        value={this.state.machineDom}
                       >
-                        {this.state.dayOfMonth}
+                        {this.state.machineDom}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="month text-warning"
-                        value={this.state.month}
+                        className="machineMonth text-warning"
+                        value={this.state.machineMonth}
                       >
-                        {this.state.month}
+                        {this.state.machineMonth}
                       </span>
                       <span className="cron-space"> </span>
                       <span
-                        className="dayOfWeek text-danger"
-                        value={this.state.dayOfWeek}
+                        className="machineDow text-danger"
+                        value={this.state.machineDow}
                       >
-                        {this.state.dayOfWeek}
+                        {this.state.machineDow}
                       </span>
                     </code>
                     <div className="input-group-append">
@@ -132,10 +132,10 @@ class CreateCronExp extends Component {
                   <div className="col-md-4">
                     <InputGroup
                       placeholder="minute"
-                      name="minute"
+                      name="machineMinute"
                       icon="fas fa-stopwatch"
                       iconColor="bg-primary"
-                      value={this.state.minute}
+                      value={this.state.machineMinute}
                       onChange={this.onChange}
                       error={errors.minute}
                     />
@@ -144,11 +144,11 @@ class CreateCronExp extends Component {
                     className="col-md-8"
                   >
                     <CronNaturalFieldGroup
-                      placeholder="minute"
+                      placeholder="human readable minute"
                       bgColor="bg-primary"
-                      name="naturalMinute"
-                      value={this.state.naturalMinute}
-                      error={errors.naturalMinute}
+                      name="humanMinute"
+                      value={this.state.humanMinute}
+                      error={errors.humanMinute}
                       onChange={this.onChange}
                     />
                   </div>
@@ -158,21 +158,21 @@ class CreateCronExp extends Component {
                   <div className="col-md-4">
                     <InputGroup
                       placeholder="hour"
-                      name="hour"
+                      name="machineHour"
                       icon="far fa-clock"
                       iconColor="bg-success"
-                      value={this.state.hour}
+                      value={this.state.machineHour}
                       onChange={this.onChange}
-                      error={errors.hour}
+                      error={errors.machineHour}
                     />
                   </div>
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
-                      placeholder="hour"
+                      placeholder="human readable hour"
                       bgColor="bg-success"
-                      name="naturalHour"
-                      value={this.state.naturalHour}
-                      error={errors.naturalHour}
+                      name="humanHour"
+                      value={this.state.humanHour}
+                      error={errors.humanHour}
                       onChange={this.onChange}
                     />
                   </div>
@@ -181,21 +181,21 @@ class CreateCronExp extends Component {
                   <div className="col-md-4">
                     <InputGroup
                       placeholder="day of month"
-                      name="dayOfMonth"
+                      name="machineDom"
                       icon="fas fa-calendar-day"
                       iconColor="bg-info"
-                      value={this.state.dayOfMonth}
+                      value={this.state.machineDom}
                       onChange={this.onChange}
-                      error={errors.dayOfMonth}
+                      error={errors.machineDom}
                     />
                   </div>
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
-                      placeholder="day of month"
+                      placeholder="human readable day of month"
                       bgColor="bg-info"
-                      name="naturalDom"
-                      value={this.state.naturalDom}
-                      error={errors.naturalDom}
+                      name="humanDom"
+                      value={this.state.humanDom}
+                      error={errors.humanDom}
                       onChange={this.onChange}
                     />
                   </div>
@@ -204,21 +204,21 @@ class CreateCronExp extends Component {
                   <div className="col-md-4">
                     <InputGroup
                       placeholder="month"
-                      name="month"
+                      name="machineMonth"
                       icon="far fa-calendar"
                       iconColor="bg-warning"
-                      value={this.state.month}
+                      value={this.state.machineMonth}
                       onChange={this.onChange}
-                      error={errors.month}
+                      error={errors.machineMonth}
                     />
                   </div>
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
-                      placeholder="month"
+                      placeholder="human readable month"
                       bgColor="bg-warning"
-                      name="naturalMonth"
-                      value={this.state.naturalMonth}
-                      error={errors.naturalMonth}
+                      name="humanMonth"
+                      value={this.state.humanMonth}
+                      error={errors.humanMonth}
                       onChange={this.onChange}
                     />
                   </div>
@@ -227,21 +227,21 @@ class CreateCronExp extends Component {
                   <div className="col-md-4">
                     <InputGroup
                       placeholder="day of the week"
-                      name="dayOfWeek"
+                      name="machineDow"
                       icon="fas fa-calendar-week"
                       iconColor="bg-danger"
-                      value={this.state.dayOfWeek}
+                      value={this.state.machineDow}
                       onChange={this.onChange}
-                      error={errors.dayOfWeek}
+                      error={errors.machineDow}
                     />
                   </div>
                   <div className="col-md-8">
                     <CronNaturalFieldGroup
-                      placeholder="day of week"
+                      placeholder="human readable day of week"
                       bgColor="bg-danger"
-                      name="naturalDow"
-                      value={this.state.naturalDow}
-                      error={errors.naturalDow}
+                      name="humanDow"
+                      value={this.state.humanDow}
+                      error={errors.humanDow}
                       onChange={this.onChange}
                     />
                   </div>
@@ -264,13 +264,14 @@ class CreateCronExp extends Component {
 }
 
 CreateCronExp.propTypes = {
-  createCronExp: PropTypes.func.isRequired,
+  cronExpData: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
+  cronExpData: state.cronExpData,
   profile: state.profile,
   auth: state.auth,
   errors: state.errors,
