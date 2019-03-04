@@ -20,6 +20,7 @@ class ProfileHeader extends Component {
                         className='text-white p-2'
                         href={profile.website}
                         target='_blank'
+                        rel='noopener noreferrer'
                       >
                         <i className="fas fa-external-link-alt fa-2x" />
                       </a>
@@ -28,8 +29,9 @@ class ProfileHeader extends Component {
                     {profile.twitter = !profile.twitter ? null : (
                       <a
                         className='text-white p-2'
-                        href={profile.twitter}
+                        href={`https://www.twitter.com/${profile.twitter}`}
                         target='_blank'
+                        rel='noopener noreferrer'
                       >
                         <i className="fab fa-twitter fa-2x" />
                       </a>
@@ -37,11 +39,15 @@ class ProfileHeader extends Component {
                     {profile.github = !profile.github ? null : (
                       <a
                         className='text-white p-2'
-                        href={profile.github}
+                        href={`https://github.com/${profile.github}`}
                         target='_blank'
+                        rel='noopener noreferrer'
                       >
                         <i className="fab fa-github fa-2x" />
                       </a>
+                    )}
+                    {profile.bio = !profile.bio ? null : (
+                      <p>{profile.bio}</p>
                     )}
                   </p>
 
