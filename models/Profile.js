@@ -29,6 +29,61 @@ const ProfileSchema = new Schema({
   twitter: {
     type: String,
   },
+  cronExps: [
+    {
+      dateCreated: {
+        type: Date,
+        default: Date.now,
+      },
+      name: {
+        type: String,
+      },
+      machineCron: {
+        minute: {
+          type: String,
+          required: true,
+        },
+        hour: {
+          type: String,
+          required: true,
+        },
+        dayOfMonth: {
+          type: String,
+          required: true,
+        },
+        month: {
+          type: String,
+          required: true,
+        },
+        dayOfWeek: {
+          type: String,
+          required: true,
+        },
+      },
+      humanCron: {
+        minute: {
+          type: String,
+          required: true,
+        },
+        hour: {
+          type: String,
+          required: true,
+        },
+        dayOfMonth: {
+          type: String,
+          required: true,
+        },
+        month: {
+          type: String,
+          required: true,
+        },
+        dayOfWeek: {
+          type: String,
+          required: true,
+        },
+      },
+    },
+  ],
   date: {
     type: Date,
     default: Date.now

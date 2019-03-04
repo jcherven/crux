@@ -141,28 +141,62 @@ router.post(
 
 /**
  * @route   POST /api/profile/cronexp
- * @desc    Adds a cronexpression to the authenticated user's profile
+ * @desc    Adds a cronexpression to the logged in user's profile
  * @access  Private
  **/
 router.post('/cronexp', passport.authenticate('jwt', {session: false}), (req, res) => {
+  // const { errors } = validateCronExpInput(req.body);
+  // if (errors) return res.status(400).json(errors);
+
   Profile.findOne({ user: req.user.id })
     .then(profile => {
       const newCronExp = {
-        minute: req.body.minute,
-        hour: req.body.hour,
-        dayOfMonth: req.body.dayOfMonth,
-        month: req.body.month,
-        dayOfWeek: req.body.dayOfWeek,
-        naturalMinute: this.state.naturalMinute,
-        naturalHour: this.state.naturalHour,
-        naturalDom: this.state.naturalDom,
-        naturalMonth: this.state.naturalMonth,
-        naturalDow: this.state.naturalDow,
+        name: req.body.name,
+        machineCron: {
+          minute: req.body.machineMinute,
+          hour: req.body.machineHour,
+          dayOfMonth: req.body.machineDom,
+          month: req.body.machineMonth,
+          dayOfWeek: req.body.machineDow,
+        },
+        humanCron: {
+          minute: req.body.humanMinute,
+          hour: req.body.humanHour,
+          dayOfMonth: req.body.humanDom,
+          month: req.body.humanMonth,
+          dayOfWeek: req.body.humanDow,
+        },
       }
-      new cronExp(newCronExp).save()
-        .then(newCronExp => res.json(newCronExp));
+      // Prepend the profile's cronExps array with this new object
+      profile.cronExps.unshift(newCronExp);
+      profile.save().then(profile => res.json(profile));
     });
 });
+
+/**
+ * @route   DELETE /api/profile/cronexp/:cronexp_id
+ * @desc    Deletes a cronexpression with the provided ID from the logged in user's profile
+ * @access  Private
+ **/
+router.delete(
+  '/cronexp/:cronexp_id',
+  passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id  }).then(profile => {
+      // Get the index to remove
+      const removeIndex = profile.cronExps
+        .map(item => item.id)
+        .indexOf(req.params.cronexp_id);
+
+      // Splice the selected item out of the cronExps array
+      profile.cronExps.splice(removeIndex, 1);
+
+      profile.save().then(profile => res.json(profile));
+
+    })
+      .catch(err => res.status(404).json(err));
+  }
+);
 
 /**************************************
  * @route       DELETE /api/profile
