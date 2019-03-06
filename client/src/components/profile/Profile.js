@@ -33,8 +33,7 @@ class Profile extends Component {
             </div>
             <div className="col-md-6 text-light">
               <ProfileHeader profile={profile} />
-              <ProfileAbout profile={profile}/>
-              <ProfileCronExps />
+              <ProfileCronExps cronExps={profile.cronExps}/>
             </div>
           </div>
         </div>

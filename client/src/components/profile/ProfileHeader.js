@@ -10,7 +10,7 @@ class ProfileHeader extends Component {
           <div className='col-md-12 text-light'>
             <card className='card card-body bg-info text-white mb-3'>
               <div className='row'>
-                <div className='text-center'>
+                <div className='text-center col-md-12'>
                   <h3 className='display-4 text-center'>
                     {profile.user.name}
                   </h3>
@@ -46,7 +46,7 @@ class ProfileHeader extends Component {
                         <i className="fab fa-github fa-2x" />
                       </a>
                     )}
-                    {profile.bio = !profile.bio ? null : (
+                    {profile.bio = !profile.bio ? (<span></span>) : (
                       <p>{profile.bio}</p>
                     )}
                   </p>
