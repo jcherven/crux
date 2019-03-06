@@ -149,8 +149,8 @@ class CreateCronExp extends Component {
                       bgColor="bg-primary"
                       name="humanMinute"
                       value={this.state.humanMinute}
-                      error={errors.humanMinute}
                       onChange={this.onChange}
+                      error={errors.humanMinute}
                     />
                   </div>
                 </div>
@@ -272,14 +272,13 @@ class CreateCronExp extends Component {
 }
 
 CreateCronExp.propTypes = {
-  cronExpData: PropTypes.func.isRequired,
+  createCronExp: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-  cronExpData: state.cronExpData,
   profile: state.profile,
   auth: state.auth,
   errors: state.errors,
