@@ -8,9 +8,9 @@ const router = express.Router();
 const passport = require('passport');
 
 const Validator = require('validator');
-const naturalizeCronExp = require('../../cronMagic/naturalizeCron.js');
 
 const CronExp = require('../../models/CronExp');
+const naturalizeCronExp = require('../../cronMagic/naturalizeCron.js');
 
 /***************************************
  * @route       GET /api/expression

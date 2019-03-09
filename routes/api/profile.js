@@ -129,7 +129,7 @@ router.post(
         } else {        // Create if profile !exists
           Profile.findOne({ vanityUrl: profileFields.vanityUrl }).then(profile => {
             if (profile) {
-              errors.vanityUrl = 'This custom URL string has already been taken';
+              errors.vanityUrl = 'This vanity URL has already been taken';
               res.staus(400).json(errors);
             }
             new Profile(profileFields).save().then(profile => res.json(profile));
@@ -166,7 +166,7 @@ router.post('/cronexp', passport.authenticate('jwt', {session: false}), (req, re
           month: req.body.humanMonth,
           dayOfWeek: req.body.humanDow,
         },
-      }
+      };
       // Prepend the profile's cronExps array with this new object
       profile.cronExps.unshift(newCronExp);
       profile.save().then(profile => res.json(profile));
